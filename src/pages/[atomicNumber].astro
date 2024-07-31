@@ -1,0 +1,114 @@
+---
+import { renderToAsyncIterable } from "astro/runtime/server/render/astro/render.js";
+import {elements} from "../lib/elements"
+
+
+const {atomicNumber} = Astro.params;
+let {atomicMass, atomicRadius, boilingPoint, cpkHexColor, density, electronAffinity, electronConfiguration, electronegativity, groupBlock, ionizationEnergy, meltingPoint, name, oxidationStates, standardState, symbol, yearDiscovered} = Astro.props;
+const firstLetter = name[0]
+name = name.substring(1);
+
+export function getStaticPaths() {
+
+  let elpitoenbolas = []
+  elements.forEach(element => {
+    const {atomicMass, atomicNumber, atomicRadius, boilingPoint, cpkHexColor, density, electronAffinity, electronConfiguration, electronegativity, groupBlock, ionizationEnergy, meltingPoint, name, oxidationStates, standardState, symbol, yearDiscovered} = element;
+    elpitoenbolas.push({
+      params: {atomicNumber},
+      props: {atomicMass, atomicNumber, atomicRadius, boilingPoint, cpkHexColor, density, electronAffinity, electronConfiguration, electronegativity, groupBlock, ionizationEnergy, meltingPoint, name, oxidationStates, standardState, symbol, yearDiscovered}
+    })
+  });
+  
+  return elpitoenbolas
+}
+
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{firstLetter}{name}</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</head>
+<body>
+  <header class="w-full h-16 px-40 flex items-center my-5 ">
+      <a href="/">
+        <i class='bx bx-arrow-back text-5xl no-sombra' ></i>
+      </a>
+
+  </header>
+  <section class="w-full px-40">
+    <div class="title flex flex-row items-end gap-5 mb-10">
+      <div class="element aspect-square w-28 bg-red-700 flex justify-center items-center relative font-bold text-white">
+        <p class="absolute top-0 right-0 p-2 text-sm">{atomicNumber}</p>
+        <p class="text-6xl">{symbol}</p>
+      </div>
+      <h1 class="text-7xl font-bold"> <span class="firstLetter">{firstLetter}</span>{name}</h1>
+    
+    </div>
+    
+    <div class="info flex flex-row gap-14 w-full px-[132px]">
+
+      <div class="left">
+  
+        <div class="data flex flex-row text-4xl items-center">
+          <i class='bx bxs-plug text-5xl w-14'></i><p>Grupo: {groupBlock}</p>
+        </div>
+        <div class="data flex flex-row text-4xl items-center">
+          <i class='bx bxs-calendar text-5xl w-14'></i> <p>Descubierto en {yearDiscovered}</p>
+        </div>
+        <div class="data flex flex-row text-4xl items-center">
+          <i class='bx bx-clipboard text-5xl w-14'></i> <p>Estado estándar: {standardState}</p>
+        </div>
+        <div class="data flex flex-row text-4xl items-center">
+          <i class='bx bxs-thermometer text-5xl w-14'></i> <p>Punto de ebullición: {Math.round(parseInt(boilingPoint) - 273.15 )} C°</p>
+        </div>
+        <div class="data flex flex-row text-4xl items-center">
+          <i class='bx bxs-flask text-5xl w-14'></i> <p>Punto de fusión: {Math.round(parseInt(meltingPoint) - 273.15 )} C°</p>
+        </div>
+        <div class="data flex flex-row text-4xl items-center">
+          <i class='bx bxs-shield-plus text-5xl w-14'></i> <p>Estados de oxidación: {oxidationStates}</p>
+        </div>
+      </div>
+      <div class="right">
+        <div class="data flex flex-row text-4xl items-center">
+          <i class='bx bx-atom text-5xl w-14'></i> <p>Masa atómica: {atomicMass}</p>
+        </div>
+        <div class="data flex flex-row text-4xl items-center">
+          <i class='bx bx-calculator text-5xl w-14'></i> <p>Numero atómico: {atomicNumber}</p>
+        </div>
+        <div class="data flex flex-row text-4xl items-center">
+          <i class='bx bx-ruler text-5xl w-14'></i> <p>Radio atómico: {atomicRadius}</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+</body>
+</html>
+<style define:vars={{cpkHexColor}}>
+  body {
+    background-color: #010409;
+    color: #fff;
+  }
+  i {
+    color: rgba(0,108,36,1);
+    text-shadow: 2px 2px 2px rgba(21,69,61,1);
+  }
+  .firstLetter {
+    color: rgba(0,108,36,1);
+  }
+  .element {
+    background: rgb(21,69,61);
+    background: linear-gradient(135deg, rgba(21,69,61,1) 0%, rgba(0,108,36,1) 100%);
+    border: 4px solid #072508;
+  }
+  .no-sombra {
+    text-shadow: none;
+  }
+</style>
