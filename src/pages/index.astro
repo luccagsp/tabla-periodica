@@ -431,7 +431,6 @@ import ElementComponent from '../components/ElementComponent.astro';
 	</main>
 </Layout>
 
-
 <style is:global>
 	.all{
 		
@@ -447,9 +446,9 @@ import ElementComponent from '../components/ElementComponent.astro';
   }
   .periodic {
     position: relative;
-    height: 500px;
     margin-right: -1px;
     text-shadow: none;
+		height: 600px;
   }
   .periodic-row {
     clear: both;
@@ -492,22 +491,24 @@ import ElementComponent from '../components/ElementComponent.astro';
   .at_num,
   .at_details {
     position: absolute;
+		line-height: 12px;
     font-size: 12px;
     color: rgb(255, 255, 255);
     opacity: 1;
   }
   .at_num {
-    top: 4px;
-    right: 5px;
+    top: 2px;
+    right: 2px;
+		
   }
   .symbol {
     position: absolute;
-    top: 35%;
+    top: 20%;
     left: 0px;
     right: 0px;
     
-    font-size: 20px;
-	font-weight: bold;
+    font-size: 17px;
+		font-weight: bold;
     line-height: 1;
     height: 9px;
     color: rgba(255, 255, 255, 0.9);
@@ -516,6 +517,7 @@ import ElementComponent from '../components/ElementComponent.astro';
     bottom: 4px;
     left: 0px;
     right: 0px;
+		font-size: 10px;
   }
   .cell:nth-child(-n + 2) .element,
   .cell:nth-child(n + 13) .element {
@@ -583,7 +585,7 @@ import ElementComponent from '../components/ElementComponent.astro';
   }
   @media (min-width: 600px) {
     .periodic {
-      height: 600px;
+      
       margin-right: -2px;
     }
     .element {
@@ -592,11 +594,11 @@ import ElementComponent from '../components/ElementComponent.astro';
     }
     .at_num,
     .at_details {
-      font-size: 4px;
+      font-size: 10px;
       opacity: 1;
     }
     .symbol {
-      margin-top: -17px;
+      margin-top: -10px;
       font-size: 16px;
       font-weight: bold;
       line-height: 30px;
@@ -617,11 +619,9 @@ import ElementComponent from '../components/ElementComponent.astro';
     .periodic {
       height: 680px;
     }
-    .at_num,
-    .at_details {
-      font-size: 5px;
-    }
+
     .symbol {
+			margin-top: -5px;
       font-size: 24px;
     }
   }
@@ -629,10 +629,7 @@ import ElementComponent from '../components/ElementComponent.astro';
     .periodic {
       height: 800px;
     }
-    .at_num,
-    .at_details {
-      font-size: 6px;
-    }
+
     .symbol {
       font-size: 30px;
     }
