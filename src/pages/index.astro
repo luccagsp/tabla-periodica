@@ -4,8 +4,10 @@ import ElementComponent from '../components/ElementComponent.astro';
 ---
 
 <Layout title="Tabla Periodica">
-	<main class=" w-[970px]	 ml-32">
-		<h1 class="title text-[48px] font-[Arial]">Tabla periodica</h1>
+	<div class="logo w-screen md:w-[500px] md:ml-32 px-5 my-7">
+		<img src="logo.svg" class="logotipo w-full h-auto" alt="logotipo">
+	</div>
+	<main class=" w-[970px]	 md:ml-32 ml-5">
 		<div class="periodic">
 			<div class="periodic-row">
 				<div class="cell">
@@ -443,6 +445,7 @@ import ElementComponent from '../components/ElementComponent.astro';
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
+
   }
   .periodic {
     position: relative;
@@ -472,7 +475,7 @@ import ElementComponent from '../components/ElementComponent.astro';
     bottom: 1px;
     right: 1px;
     box-sizing: border-box;
-    box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.5);
+    
     border: 1px solid rgba(0, 0, 0, 0.05);
     text-align: center;
     pointer-events: none;
